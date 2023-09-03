@@ -27,10 +27,7 @@ namespace Unit
             InitComponents();
         }
 
-        private void InitComponents()
-        {
-            GetComponentsInChildren<IInitializable<Unit>>(true).ForEach(it => it.Init(this));
-        }
+        private void InitComponents() => gameObject.InitAllComponentsInChildren(this);
 
         public void Destroy() => _destroyer.Destroy();
 

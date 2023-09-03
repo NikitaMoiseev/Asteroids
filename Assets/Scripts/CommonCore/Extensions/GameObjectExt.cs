@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using CommonComponents;
+using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace Extension
+namespace Extensions
 {
     public static class GameObjectExt
     {
@@ -40,6 +41,11 @@ namespace Extension
         public static bool HasComponentInChildren<T>(this GameObject gameObject)
         {
             return gameObject.GetComponentInChildren<T>() != null;
+        }
+
+        public static void InitAllComponentsInChildren<T>(this GameObject gameObject, T data)
+        {
+            gameObject.GetComponentsInChildren<IInitializable<T>>().ForEach(it => it.Init(data));
         }
     }
 }

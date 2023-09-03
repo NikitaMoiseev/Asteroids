@@ -4,7 +4,6 @@ using ObjectFactory.Factories;
 using ObjectPool.Manager;
 using ObjectPool.Wrapper;
 using ObjectResources.Manager;
-using System.Resources;
 using UnityEngine;
 
 namespace App.FactoryManager

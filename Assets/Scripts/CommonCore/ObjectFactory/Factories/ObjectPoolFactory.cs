@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using Extension;
+using Extensions;
 using ObjectFactory.Components;
 using ObjectPool.Component;
 using ObjectPool.Manager;
