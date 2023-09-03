@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CommonCore.ObjectResources.Model
+namespace ObjectResources.Model
 {
     [Serializable]
     public class ResourceModel

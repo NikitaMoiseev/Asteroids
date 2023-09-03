@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ObjectPool.Pool;
 
-namespace CommonCore.ObjectPool.Component
+namespace ObjectPool.Component
 {
     [DisallowMultipleComponent]
     public class PoolObject : MonoBehaviour

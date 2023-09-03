@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CommonCore.ObjectPool
+namespace ObjectPool.Pool
 {
     public interface IObjectPool<T> : IDisposable
     {

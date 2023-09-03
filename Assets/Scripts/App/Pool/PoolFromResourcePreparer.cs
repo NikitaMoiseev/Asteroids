@@ -1,7 +1,7 @@
-using CommonCore.ObjectPool.Component;
-using CommonCore.ObjectPool.Manager;
-using CommonCore.ObjectResources.Manager;
-using CommonCore.Extensions;
+using ObjectPool.Component;
+using ObjectPool.Manager;
+using ObjectResources.Manager;
+using Extensions;
 using System.Linq;
 
 namespace App.Pool

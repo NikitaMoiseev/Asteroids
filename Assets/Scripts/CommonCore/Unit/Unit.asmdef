@@ -1,11 +1,10 @@
 {
-    "name": "App",
+    "name": "Unit",
     "rootNamespace": "",
     "references": [
-        "ObjectPool",
-        "ObjectResources",
-        "Extensions",
-        "ObjectFactory"
+        "GUID:6635e40ffae46c74c8be18ed17976df4",
+        "GUID:6696c81f838ce6745a1e00b46ada297b",
+        "GUID:81c5a69013553684ca0f937f0256bf38"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

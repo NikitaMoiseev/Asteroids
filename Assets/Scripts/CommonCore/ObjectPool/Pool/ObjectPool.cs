@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using UnityEngine;
 
-namespace CommonCore.ObjectPool
+namespace ObjectPool.Pool
 {
     public class ObjectPool<T> : IObjectPool<T>
     {
@@ -28,7 +27,7 @@ namespace CommonCore.ObjectPool
                           Action<T> onGet = null,
                           Action<T> onRelease = null,
                           Action<T> onDestroy = null,
-                          [CanBeNull] PoolParams poolParams = null)
+                          PoolParams poolParams = null)
         {
             _name = name;
             _poolParams = poolParams ?? new PoolParams();

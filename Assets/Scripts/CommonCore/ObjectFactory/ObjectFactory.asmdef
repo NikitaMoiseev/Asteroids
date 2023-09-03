@@ -1,11 +1,10 @@
 {
-    "name": "App",
+    "name": "ObjectFactory",
     "rootNamespace": "",
     "references": [
-        "ObjectPool",
-        "ObjectResources",
-        "Extensions",
-        "ObjectFactory"
+        "GUID:6696c81f838ce6745a1e00b46ada297b",
+        "GUID:0930b7a5c1540764a838c7f27fd1b40a",
+        "GUID:c46c4e8ca47cfd34888f3e185cfbe4bd"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

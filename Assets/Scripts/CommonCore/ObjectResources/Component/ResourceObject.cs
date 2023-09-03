@@ -1,8 +1,8 @@
 using System;
-using CommonCore.ObjectResources.Model;
+using ObjectResources.Model;
 using UnityEngine;
 
-namespace CommonCore.ObjectResources.Component
+namespace ObjectResources.Component
 {
     [DisallowMultipleComponent]
     public class ResourceObject : MonoBehaviour

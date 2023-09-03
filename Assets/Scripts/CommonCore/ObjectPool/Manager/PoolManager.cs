@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
-using CommonCore.ObjectPool.Component;
-using CommonCore.ObjectPool.Wrapper;
+using ObjectPool.Component;
+using ObjectPool.Wrapper;
+using ObjectPool.Pool;
 using UnityEngine;
 
-namespace CommonCore.ObjectPool.Manager
+namespace ObjectPool.Manager
 {
     public class PoolManager : IDisposable
     {

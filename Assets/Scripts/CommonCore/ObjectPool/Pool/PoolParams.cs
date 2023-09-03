@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-namespace CommonCore.ObjectPool
+namespace ObjectPool.Pool
 {
     [Serializable]
     public class PoolParams

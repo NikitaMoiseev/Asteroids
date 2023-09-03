@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using CommonCore.ObjectResources.Model;
-using CommonCore.ObjectResources.Component;
+using ObjectResources.Model;
+using ObjectResources.Component;
 using UnityEngine;
 using System.Linq;
 
-namespace CommonCore.ObjectResources.Manager
+namespace ObjectResources.Manager
 {
     public class ObjectResourceManager
     {

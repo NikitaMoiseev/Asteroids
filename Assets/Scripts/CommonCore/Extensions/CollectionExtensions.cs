@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace CommonCore.Extensions
+namespace Extensions
 {
     /// <summary>
     /// Collection Extensions

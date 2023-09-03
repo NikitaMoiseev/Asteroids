@@ -1,8 +1,9 @@
 using System;
 using UnityEngine;
-using CommonCore.ObjectPool.Component;
+using ObjectPool.Component;
+using ObjectPool.Pool;
 
-namespace CommonCore.ObjectPool.Wrapper
+namespace ObjectPool.Wrapper
 {
     public class CommonPoolWrapper : MonoBehaviour, IPoolWrapper
     {
