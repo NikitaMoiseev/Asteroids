@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace App.FactoryManager
+namespace App.Factory
 {
     public abstract class FactoryManager : MonoBehaviour, IDisposable
     {

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _factoryManager: {fileID: 5266993390347103704}
+  _attackConfigs: {fileID: 11400000, guid: 7465c9e916d3294469bb07e9f8050dca, type: 2}
 --- !u!1001 &7615475845168746055
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ using ObjectPool.Wrapper;
 using ObjectResources.Manager;
 using UnityEngine;
 
-namespace App.FactoryManager
+namespace App.Factory
 {
     public class PoolFactoryManager : FactoryManager
     {

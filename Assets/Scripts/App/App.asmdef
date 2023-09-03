@@ -5,7 +5,10 @@
         "ObjectPool",
         "ObjectResources",
         "Extensions",
-        "ObjectFactory"
+        "ObjectFactory",
+        "Unit",
+        "CommonComponents",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

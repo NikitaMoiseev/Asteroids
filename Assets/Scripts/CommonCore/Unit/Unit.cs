@@ -4,38 +4,33 @@ using ObjectFactory.Components;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unit.Components;
 using Unit.Model;
 using UnityEngine;
 
 namespace Unit
 {
-    [RequireComponent(typeof(Destroyer))]
+    [RequireComponent(typeof(UnitHealth))]
     public class Unit : MonoBehaviour
     {
-        public IUnitModel Model { get; private set; }
+        private IUnitModel _model;
 
-        private Destroyer _destroyer;
+        private UnitHealth _health;
+
+        public UnitHealth Health => _health;
+        public bool IsAlive => _model.HealthModel.IsAlive;
 
         private void Awake()
         {
-            _destroyer = GetComponent<Destroyer>();
+            _health = gameObject.RequireComponent<UnitHealth>();
         }
 
         public void Init(IUnitModel unitModel)
         {
-            Model = unitModel;
+            _model = unitModel;
             InitComponents();
         }
 
-        private void InitComponents() => gameObject.InitAllComponentsInChildren(this);
-
-        public void Destroy() => _destroyer.Destroy();
-
-        private void OnDisable() => Dispose();
-
-        private void Dispose()
-        {
-
-        }
+        private void InitComponents() => gameObject.InitAllComponentsInChildren(_model);
     }
 }

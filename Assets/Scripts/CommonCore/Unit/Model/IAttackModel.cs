@@ -3,8 +3,11 @@
     public interface IAttackModel
     { 
         string Name {  get; }
+        string ProjectileId { get; }
         float AttackInterval { get; }
-        float AttackDistance { get; }
         float HitDamage { get; }
+        float ReloadTimerValue { get; }
+        bool IsReady { get; }
+        void Attack();
     }
 }

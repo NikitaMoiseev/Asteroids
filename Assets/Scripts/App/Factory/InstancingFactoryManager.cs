@@ -2,7 +2,7 @@ using ObjectFactory;
 using ObjectFactory.Factories;
 using ObjectResources.Manager;
 
-namespace App.FactoryManager
+namespace App.Factory
 {
     public class InstancingFactoryManager : FactoryManager
     {
