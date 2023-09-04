@@ -1,6 +1,4 @@
 using CommonComponents;
-using System.Collections;
-using System.Collections.Generic;
 using Unit.Model;
 using UnityEngine;
 
