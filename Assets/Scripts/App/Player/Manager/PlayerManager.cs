@@ -31,17 +31,16 @@ namespace App.Player.Manager
             _projectileSpawner = projectileSpawner;
         }
 
-        public void SpawnPlayer(Vector3 position, Action OnDeadAction)
+        public void SpawnPlayer(Vector3 position)
         {
             Player = _objectFactory.Create<Unit.Unit>(_playerConfig.Id);
-            var playerModel = new PlayerUnitModel(
+            var playerModel = new PlayerUnitModel(_playerConfig.Id,
                 new UnitHealthModel(_playerConfig),
                 new UnitMovementModel(_playerConfig),
                 new UnitRotateModel(_playerConfig),
                 new GunReloadableAttackModel(_attackConfigs.GetConfig(_playerConfig.AttackId), _projectileSpawner),
                 new GunReloadableAttackModel(_attackConfigs.GetConfig(_playerConfig.SecondAttackId), _projectileSpawner));
             Player.Init(playerModel);
-            playerModel.HealthModel.OnDead += OnDeadAction;
             Player.transform.position = position;
         }
 

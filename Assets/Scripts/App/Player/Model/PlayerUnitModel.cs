@@ -4,6 +4,7 @@ namespace App.Player.Model
 {
     public class PlayerUnitModel : IUnitModel
     {
+        public string Id { get; }
         public IHealthModel HealthModel { get; }
         public IMovementModel MovementModel { get; }
         public IRotateModel RotateModel { get; }
@@ -11,8 +12,9 @@ namespace App.Player.Model
         public IAttackModel SecondAttackModel { get; }
 
 
-        public PlayerUnitModel(IHealthModel healthModel, IMovementModel movementModel, IRotateModel rotateModel, IAttackModel attackModel, IAttackModel secondAttackModel)
+        public PlayerUnitModel(string id, IHealthModel healthModel, IMovementModel movementModel, IRotateModel rotateModel, IAttackModel attackModel, IAttackModel secondAttackModel)
         {
+            Id = id;
             HealthModel = healthModel;
             MovementModel = movementModel;
             RotateModel = rotateModel;

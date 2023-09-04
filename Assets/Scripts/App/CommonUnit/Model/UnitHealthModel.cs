@@ -15,7 +15,7 @@ namespace App.CommonUnit.Model
         public float CurrentHealth { get; private set; }
 
         public event Action<DamageInfo> OnDamageTaken;
-        public event Action OnDead;
+        public event Action OnDeath;
 
         public UnitHealthModel(UnitConfig config)
         {
@@ -31,7 +31,7 @@ namespace App.CommonUnit.Model
             Assert.IsFalse(damageInfo.Damage < 0, "Damage cannot be equal to a negative number");
             CurrentHealth = Mathf.Clamp(CurrentHealth - damageInfo.Damage, 0, MaxHealth);
             IsAlive = CurrentHealth != 0;
-            if (!IsAlive) OnDead?.Invoke();
+            if (!IsAlive) OnDeath?.Invoke();
             OnDamageTaken?.Invoke(damageInfo);
         }
     }

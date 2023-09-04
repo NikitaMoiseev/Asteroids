@@ -13,14 +13,14 @@ using UnityEngine;
 
 namespace App.Enemy.Manager
 {
-    public class EnemiesSpawner
+    public class EnemySpawner
     {
         private EnemyConfigsSO _enemyConfigs;
         private IObjectFactory _objectFactory;
         private AttackConfigsSO _attackConfigs;
         private PlayerManager _playerManager;
 
-        public EnemiesSpawner(
+        public EnemySpawner(
             EnemyConfigsSO enemyConfigs, 
             IObjectFactory factory,
             AttackConfigsSO attackConfigsSO,
@@ -32,17 +32,16 @@ namespace App.Enemy.Manager
             _playerManager = playerManager;
         }
 
-        public Unit.Unit SpawnEnemy(string id, Vector3 position, Action OnDeadAction)
+        public Unit.Unit SpawnEnemy(string id, Vector3 position)
         {
             var config = _enemyConfigs.GetConfig(id);
             var unit = _objectFactory.Create<Unit.Unit>(config.Id);
-            var unitModel = new EnemyUnitModel(
+            var unitModel = new EnemyUnitModel(id,
                 new UnitHealthModel(config),
                 new UnitMovementModel(config),
                 new UnitRotateModel(config),
                 new EnemyAttackModel(_attackConfigs.GetConfig(config.AttackId), _playerManager));
             unit.Init(unitModel);
-            unitModel.HealthModel.OnDead += OnDeadAction;
             unit.transform.position = position;
             return unit;
         }

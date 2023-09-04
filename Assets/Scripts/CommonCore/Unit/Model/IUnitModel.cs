@@ -2,6 +2,7 @@
 {
     public interface IUnitModel
     {
+        string Id { get; }
         IHealthModel HealthModel { get; }
         IMovementModel MovementModel { get; }
         IRotateModel RotateModel { get; }

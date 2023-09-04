@@ -19,6 +19,9 @@ namespace Unit
 
         public UnitHealth Health => _health;
         public bool IsAlive => _model.HealthModel.IsAlive;
+        public string Id => _model.Id;
+
+        public event Action<Unit> OnDeathAction;
 
         private void Awake()
         {
@@ -29,8 +32,19 @@ namespace Unit
         {
             _model = unitModel;
             InitComponents();
+            _model.HealthModel.OnDeath += OnDeath;
         }
 
         private void InitComponents() => gameObject.InitAllComponentsInChildren(_model);
+
+        private void OnDeath() => OnDeathAction?.Invoke(this);
+
+        private void OnDisable() => Dispose();
+
+        private void Dispose()
+        {
+            _model.HealthModel.OnDeath -= OnDeath;
+            OnDeathAction = null;
+        }
     }
 }

@@ -23,7 +23,7 @@ namespace App
 
         private ObjectResourceManager _resourceManager;
         private PlayerManager _playerManager;
-        private EnemiesSpawner _enemiesSpawner;
+        private EnemySpawner _enemySpawner;
         private ProjectileSpawner _projectileSpawner;
 
         private void Awake()
@@ -33,9 +33,9 @@ namespace App
             _boundsSize.Init();
             _projectileSpawner = new ProjectileSpawner(_factoryManager.Factory);
             _playerManager = new PlayerManager(_playerConfig.Config, _factoryManager.Factory, _attackConfigs, _projectileSpawner);
-            _enemiesSpawner = new EnemiesSpawner(_enemyConfigs, _factoryManager.Factory, _attackConfigs, _playerManager);
-            _playerManager.SpawnPlayer(Vector3.zero, null);
-            _enemiesSpawner.SpawnEnemy("BigAsteroid" , Vector3.up * 3, null);
+            _enemySpawner = new EnemySpawner(_enemyConfigs, _factoryManager.Factory, _attackConfigs, _playerManager);
+            _playerManager.SpawnPlayer(Vector3.zero);
+            _enemySpawner.SpawnEnemy("BigAsteroid" , Vector3.up * 3);
         }
 
         private void OnDestroy()

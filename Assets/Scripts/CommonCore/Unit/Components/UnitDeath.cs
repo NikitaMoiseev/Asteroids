@@ -16,7 +16,7 @@ namespace Unit.Components
         {
             _healthModel = model.HealthModel;
             _destroyer = gameObject.GetComponent<Destroyer>();
-            _healthModel.OnDead += Destroy;
+            _healthModel.OnDeath += Destroy;
         }
 
         public void Destroy() => _destroyer.Destroy();
@@ -26,7 +26,7 @@ namespace Unit.Components
         private void Dispose()
         {
             if (_healthModel != null)
-                _healthModel.OnDead -= Destroy;
+                _healthModel.OnDeath -= Destroy;
             _healthModel = null;
         }
     }
