@@ -19,5 +19,5 @@ MonoBehaviour:
     _acceleration: 1
     _brakingAcceleration: 0.01
     _rotateSpeed: 180
-    _attackId: Test
-    _secondAttackId: Test
+    _attackId: Gun
+    _secondAttackId: Gun

@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: AttackConfigs
   m_EditorClassIdentifier: 
   _attackConfigs:
-  - _id: Test
+  - _id: Gun
     _projectileId: Bullet
-    _attackInterval: 2
-    _hitDamage: 2
+    _attackInterval: 1
+    _hitDamage: 1
+  - _id: MeleeAttack
+    _projectileId: 
+    _attackInterval: 0.5
+    _hitDamage: 1

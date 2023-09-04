@@ -38,8 +38,8 @@ namespace App.Player.Manager
                 new UnitHealthModel(_playerConfig),
                 new UnitMovementModel(_playerConfig),
                 new UnitRotateModel(_playerConfig),
-                new ReloadableAttackModel(_attackConfigs.GetConfig(_playerConfig.AttackId), _projectileSpawner),
-                new ReloadableAttackModel(_attackConfigs.GetConfig(_playerConfig.SecondAttackId), _projectileSpawner));
+                new GunReloadableAttackModel(_attackConfigs.GetConfig(_playerConfig.AttackId), _projectileSpawner),
+                new GunReloadableAttackModel(_attackConfigs.GetConfig(_playerConfig.SecondAttackId), _projectileSpawner));
             Player.Init(playerModel);
             playerModel.HealthModel.OnDead += OnDeadAction;
             Player.transform.position = position;

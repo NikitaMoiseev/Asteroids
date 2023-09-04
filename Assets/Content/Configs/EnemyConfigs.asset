@@ -19,11 +19,11 @@ MonoBehaviour:
     _acceleration: 1
     _brakingAcceleration: 0
     _rotateSpeed: 90
-    _attackId: Test
+    _attackId: MeleeAttack
   - _id: SmallAsteroid
     _maxHealth: 1
     _maxSpeed: 2
     _acceleration: 1
     _brakingAcceleration: 0
     _rotateSpeed: 90
-    _attackId: Test
+    _attackId: MeleeAttack

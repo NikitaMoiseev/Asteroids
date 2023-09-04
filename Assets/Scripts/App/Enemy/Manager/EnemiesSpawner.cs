@@ -4,6 +4,7 @@ using App.CommonUnit.Model;
 using App.Enemy.Config;
 using App.Enemy.Model;
 using App.Player.Config;
+using App.Player.Manager;
 using App.Player.Model;
 using ObjectFactory;
 using System;
@@ -17,18 +18,18 @@ namespace App.Enemy.Manager
         private EnemyConfigsSO _enemyConfigs;
         private IObjectFactory _objectFactory;
         private AttackConfigsSO _attackConfigs;
-        private ProjectileSpawner _projectileSpawner;
+        private PlayerManager _playerManager;
 
         public EnemiesSpawner(
             EnemyConfigsSO enemyConfigs, 
             IObjectFactory factory,
             AttackConfigsSO attackConfigsSO,
-            ProjectileSpawner projectileSpawner)
+            PlayerManager playerManager)
         {
             _enemyConfigs = enemyConfigs;
             _objectFactory = factory;
             _attackConfigs = attackConfigsSO;
-            _projectileSpawner = projectileSpawner;
+            _playerManager = playerManager;
         }
 
         public Unit.Unit SpawnEnemy(string id, Vector3 position, Action OnDeadAction)
@@ -39,7 +40,7 @@ namespace App.Enemy.Manager
                 new UnitHealthModel(config),
                 new UnitMovementModel(config),
                 new UnitRotateModel(config),
-                new ReloadableAttackModel(_attackConfigs.GetConfig(config.AttackId), _projectileSpawner));
+                new EnemyAttackModel(_attackConfigs.GetConfig(config.AttackId), _playerManager));
             unit.Init(unitModel);
             unitModel.HealthModel.OnDead += OnDeadAction;
             unit.transform.position = position;

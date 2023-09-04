@@ -8,10 +8,9 @@ using UnityEngine;
 
 namespace App.CommonUnit.Model
 {
-    public class ReloadableAttackModel : IAttackModel
+    public abstract class ReloadableAttackModel : IAttackModel
     {
         private float _timeLastAttack;
-        private ProjectileSpawner _projectileSpawner;
 
         public string Name { get; }
         public string ProjectileId { get; }
@@ -20,21 +19,22 @@ namespace App.CommonUnit.Model
         public float ReloadTimerValue => Mathf.Clamp(Time.time - _timeLastAttack, 0, AttackInterval);
         public bool IsReady => ReloadTimerValue == AttackInterval;
 
-        public ReloadableAttackModel(AttackConfig attackConfig, ProjectileSpawner projectileSpawner)
+        public ReloadableAttackModel(AttackConfig attackConfig)
         {
             Name = attackConfig.Id;
             ProjectileId = attackConfig.ProjectileId;
             AttackInterval = attackConfig.AttackInterval;
             HitDamage = attackConfig.HitDamage;
-            _projectileSpawner = projectileSpawner;
         }
 
-        public void Attack(Vector3 direaction, Transform launchTransform)
+        public void Attack(Vector3 direction, Transform launchTransform)
         {
             if (!IsReady)
                 return;
             _timeLastAttack = Time.time;
-            _projectileSpawner.SpawnProjectile(ProjectileId, DamageInfo.FromAttackModel(this), direaction, launchTransform);
+            OnAttack(direction, launchTransform);
         }
+
+        protected abstract void OnAttack(Vector3 direction, Transform launchTransform);
     }
 }

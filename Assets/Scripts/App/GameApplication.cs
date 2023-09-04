@@ -33,7 +33,7 @@ namespace App
             _boundsSize.Init();
             _projectileSpawner = new ProjectileSpawner(_factoryManager.Factory);
             _playerManager = new PlayerManager(_playerConfig.Config, _factoryManager.Factory, _attackConfigs, _projectileSpawner);
-            _enemiesSpawner = new EnemiesSpawner(_enemyConfigs, _factoryManager.Factory, _attackConfigs, _projectileSpawner);
+            _enemiesSpawner = new EnemiesSpawner(_enemyConfigs, _factoryManager.Factory, _attackConfigs, _playerManager);
             _playerManager.SpawnPlayer(Vector3.zero, null);
             _enemiesSpawner.SpawnEnemy("BigAsteroid" , Vector3.up * 3, null);
         }
