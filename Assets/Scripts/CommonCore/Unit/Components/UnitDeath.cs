@@ -7,27 +7,15 @@ using UnityEngine;
 namespace Unit.Components
 {
     [RequireComponent(typeof(Destroyer))]
-    public class UnitDeath : MonoBehaviour, IInitializable<IUnitModel>
+    public class UnitDeath : MonoBehaviour, IInitializable<Unit>
     {
-        private IHealthModel _healthModel;
         private Destroyer _destroyer;
 
-        public void Init(IUnitModel model)
+        public void Init(Unit data)
         {
-            _healthModel = model.HealthModel;
             _destroyer = gameObject.GetComponent<Destroyer>();
-            _healthModel.OnDeath += Destroy;
         }
 
         public void Destroy() => _destroyer.Destroy();
-
-        private void OnDisable() => Dispose();
-
-        private void Dispose()
-        {
-            if (_healthModel != null)
-                _healthModel.OnDeath -= Destroy;
-            _healthModel = null;
-        }
     }
 }

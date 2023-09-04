@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace App.Enemy.Components
 {
-    public class AsteroidRotationInput : MonoBehaviour, IInitializable<IUnitModel>
+    public class AsteroidRotationInput : MonoBehaviour, IInitializable<Unit.Unit>
     {
         private IRotateModel _rotateModel;
-        public void Init(IUnitModel model)
+        public void Init(Unit.Unit data)
         {
-            _rotateModel = model.RotateModel;
+            _rotateModel = data.Model.RotateModel;
             _rotateModel.SetRotateDirection(Random.Range(-1f, 1f));
         }
     }

@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: _poolParams._initialCapacity
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7699775700046936504, guid: 01dc5c3d16bb1654e8489aa2f94c83e9, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

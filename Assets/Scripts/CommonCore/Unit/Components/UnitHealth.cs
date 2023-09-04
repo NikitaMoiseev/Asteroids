@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace Unit.Components
 {
-    public class UnitHealth : MonoBehaviour, IInitializable<IUnitModel>
+    public class UnitHealth : MonoBehaviour, IInitializable<Unit>
     {
         private IHealthModel _healthModel;
 
-        public void Init(IUnitModel model)
+        public void Init(Unit data)
         {
-            _healthModel = model.HealthModel;
+            _healthModel = data.Model.HealthModel;
         }
 
         public void TakeDamage(DamageInfo damage)

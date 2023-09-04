@@ -15,9 +15,16 @@ MonoBehaviour:
   _attackConfigs:
   - _id: Gun
     _projectileId: Bullet
-    _attackInterval: 1
+    _attackInterval: 0.2
     _hitDamage: 1
+    _chargesMaxCount: 1
   - _id: MeleeAttack
     _projectileId: 
     _attackInterval: 0.5
     _hitDamage: 1
+    _chargesMaxCount: 1
+  - _id: Laser
+    _projectileId: Laser
+    _attackInterval: 5
+    _hitDamage: 1
+    _chargesMaxCount: 3

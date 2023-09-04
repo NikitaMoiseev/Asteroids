@@ -5,13 +5,13 @@ using UnityEngine.InputSystem;
 
 namespace App.Player.Components
 {
-    public class PlayerMovementInput : MonoBehaviour, IInitializable<IUnitModel>
+    public class PlayerMovementInput : MonoBehaviour, IInitializable<Unit.Unit>
     {
         private IMovementModel _movementModel;
         private bool _isMovementInput = false;
-        public void Init(IUnitModel model)
+        public void Init(Unit.Unit data)
         {
-            _movementModel = model.MovementModel;
+            _movementModel = data.Model.MovementModel;
         }
 
         public void OnMovement(InputAction.CallbackContext callbackContext)

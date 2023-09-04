@@ -19,10 +19,10 @@ namespace App.Enemy.Manager
         private BoundsSize _boundsSize;
         private List<Unit.Unit> _units = new List<Unit.Unit>();
 
-        public int AsteroidCount => _units.Where(it => it.Id == _bigAsteroidId || it.Id == _smallAsteroidId).Count();
-        public int UFOCount => _units.Where(it => it.Id == _ufoId).Count();
+        public int AsteroidCount => _units.Where(it => it != null && (it.Id == _bigAsteroidId || it.Id == _smallAsteroidId)).Count();
+        public int UFOCount => _units.Where(it => it != null && it.Id == _ufoId).Count();
 
-        public EnemyManager(EnemySpawner enemySpawner, BoundsSize boundsSize)
+        public void Init(EnemySpawner enemySpawner, BoundsSize boundsSize)
         {
             _spawner = enemySpawner;
             _boundsSize = boundsSize;
@@ -30,16 +30,15 @@ namespace App.Enemy.Manager
 
         public void SpawnUFO()
         {
-            var unit = _spawner.SpawnEnemy(_bigAsteroidId, GetRandomSpawnPosition());
-            unit.OnDeathAction += SpawnSmallAsteroids;
-            unit.OnDeathAction += SpawnSmallAsteroids;
+            var unit = _spawner.SpawnUFO(_ufoId, GetRandomSpawnPosition());
+            unit.OnDeathAction += RemoveUnit;
             _units.Add(unit);
         }
 
 
         public void SpawnBigAsteroid()
         {
-            var unit = _spawner.SpawnEnemy(_bigAsteroidId, GetRandomSpawnPosition());
+            var unit = _spawner.SpawnAsteroid(_bigAsteroidId, GetRandomSpawnPosition());
             unit.OnDeathAction += SpawnSmallAsteroids;
             unit.OnDeathAction += RemoveUnit;
             _units.Add(unit);
@@ -50,7 +49,7 @@ namespace App.Enemy.Manager
             unit.OnDeathAction -= SpawnSmallAsteroids;
             for (int i = 0; i < _smallAsteroidsSpawnCount; i++)
             {
-                var newUnit = _spawner.SpawnEnemy(_smallAsteroidId, GetRandomSpawnPosition());
+                var newUnit = _spawner.SpawnAsteroid(_smallAsteroidId, unit.transform.position);
                 _units.Add(newUnit);
                 newUnit.OnDeathAction += RemoveUnit;
             }
@@ -64,20 +63,20 @@ namespace App.Enemy.Manager
 
         private Vector3 GetRandomSpawnPosition()
         {
-            var size = _boundsSize.Size - _spawnScreenSizeOffset;
+            var size = (_boundsSize.Size - _spawnScreenSizeOffset) / 2;
             var side = Random.Range(0, 4);
             switch (side)
             {
-                case 0: return new Vector3(Random.Range(0, size.x), 0);
-                case 1: return new Vector3(Random.Range(0, size.x), size.y);
-                case 2: return new Vector3(0, Random.Range(0, size.y));
-                case 3: return new Vector3(size.x, Random.Range(0, size.y));
+                case 0: return new Vector3(Random.Range(-size.x, size.x), -size.y);
+                case 1: return new Vector3(Random.Range(-size.x, size.x), size.y);
+                case 2: return new Vector3(-size.x, Random.Range(-size.y, size.y));
+                case 3: return new Vector3(size.x, Random.Range(-size.y, size.y));
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
-        public void Dispose()
+        public void Clear()
         {
             _units.Clear();
         }

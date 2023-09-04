@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace Unit.Components
 {
-    public class UnitRotation : MonoBehaviour, IInitializable<IUnitModel>
+    public class UnitRotation : MonoBehaviour, IInitializable<Unit>
     {
         private IRotateModel _rotateModel;
 
-        public void Init(IUnitModel model)
+        public void Init(Unit data)
         {
-            _rotateModel = model.RotateModel;
+            _rotateModel = data.Model.RotateModel;
         }
 
         public void Update()

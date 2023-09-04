@@ -20,11 +20,5 @@ namespace App.Factory
             PoolFromResourcePreparer.Prepare(_poolManager, objectResourceManager);
             return new ObjectPoolFactory(_poolManager, objectResourceManager);
         }
-
-        public override void Dispose()
-        {
-            base.Dispose();
-            _poolManager.Dispose();
-        }
     }
 }

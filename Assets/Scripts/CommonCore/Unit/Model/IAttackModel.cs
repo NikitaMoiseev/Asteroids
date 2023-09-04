@@ -10,6 +10,9 @@ namespace Unit.Model
         float HitDamage { get; }
         float ReloadTimerValue { get; }
         bool IsReady { get; }
+        int ChargesCount { get; }
+        int ChargesMaxCount { get; }
         void Attack(Vector3 direction, Transform launchTransform);
+        void OnTick();
     }
 }

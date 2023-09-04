@@ -12,10 +12,12 @@ namespace App.CommonUnit.Config.Attack
         [SerializeField] private string _projectileId;
         [SerializeField] private float _attackInterval;
         [SerializeField] private float _hitDamage;
+        [SerializeField] private int _chargesMaxCount;
 
         public string Id => _id;
         public string ProjectileId => _projectileId;
         public float AttackInterval => _attackInterval;
         public float HitDamage => _hitDamage;
+        public int ChargesMaxCount => _chargesMaxCount;
     }
 }

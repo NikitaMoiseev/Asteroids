@@ -1,8 +1,5 @@
 using App.CommonUnit.Config.Attack;
 using App.Enemy.Manager;
-using ObjectFactory;
-using System.Collections;
-using System.Collections.Generic;
 using Unit.Model;
 using UnityEngine;
 

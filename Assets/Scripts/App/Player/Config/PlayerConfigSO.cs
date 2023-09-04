@@ -1,7 +1,7 @@
 using App.Player.Config;
 using UnityEngine;
 
-namespace App.CommonUnit.Config.Attack
+namespace App.Player.Config
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/PlayerConfig", fileName = "PlayerConfig")]
     public class PlayerConfigSO : ScriptableObject

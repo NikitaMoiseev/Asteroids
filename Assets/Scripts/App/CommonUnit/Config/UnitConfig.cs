@@ -7,6 +7,7 @@ namespace App.CommonUnit.Config
     public class UnitConfig
     {
         [SerializeField] private string _id;
+        [SerializeField] private int _reward;
         [Header("Health")]
         [SerializeField] private float _maxHealth;
         [Header("Movement")]
@@ -18,6 +19,7 @@ namespace App.CommonUnit.Config
         [SerializeField] private string _attackId;
 
         public string Id => _id;
+        public int Reward => _reward;
         public float MaxHealth => _maxHealth;
         public float MaxSpeed => _maxSpeed;
         public float Acceleration => _acceleration;

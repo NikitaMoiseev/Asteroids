@@ -5,13 +5,13 @@ using UnityEngine.InputSystem;
 
 namespace App.Player.Components
 {
-    public class PlayerRotationInput : MonoBehaviour, IInitializable<IUnitModel>
+    public class PlayerRotationInput : MonoBehaviour, IInitializable<Unit.Unit>
     {
         private IRotateModel _rotateModel;
         private float _rotateInput;
-        public void Init(IUnitModel model)
+        public void Init(Unit.Unit data)
         {
-            _rotateModel = model.RotateModel;
+            _rotateModel = data.Model.RotateModel;
         }
         public void OnRotate(InputAction.CallbackContext callbackContext)
         {

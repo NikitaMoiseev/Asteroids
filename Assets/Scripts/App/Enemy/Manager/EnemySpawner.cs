@@ -32,13 +32,30 @@ namespace App.Enemy.Manager
             _playerManager = playerManager;
         }
 
-        public Unit.Unit SpawnEnemy(string id, Vector3 position)
+        public Unit.Unit SpawnAsteroid(string id, Vector3 position)
         {
             var config = _enemyConfigs.GetConfig(id);
             var unit = _objectFactory.Create<Unit.Unit>(config.Id);
             var unitModel = new EnemyUnitModel(id,
+                config.Reward,
                 new UnitHealthModel(config),
                 new UnitMovementModel(config),
+                new UnitRotateModel(config),
+                new EnemyAttackModel(_attackConfigs.GetConfig(config.AttackId), _playerManager));
+            unit.Init(unitModel);
+            unit.transform.position = position;
+            unit.OnDeathAction += _playerManager.AddScore;
+            return unit;
+        }
+
+        public Unit.Unit SpawnUFO(string id, Vector3 position)
+        {
+            var config = _enemyConfigs.GetConfig(id);
+            var unit = _objectFactory.Create<Unit.Unit>(config.Id);
+            var unitModel = new EnemyUnitModel(id,
+                config.Reward,
+                new UnitHealthModel(config),
+                new ChasePlayerMovementModel(config, _playerManager),
                 new UnitRotateModel(config),
                 new EnemyAttackModel(_attackConfigs.GetConfig(config.AttackId), _playerManager));
             unit.Init(unitModel);

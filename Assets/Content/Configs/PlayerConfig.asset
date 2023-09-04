@@ -17,7 +17,7 @@ MonoBehaviour:
     _maxHealth: 1
     _maxSpeed: 4
     _acceleration: 1
-    _brakingAcceleration: 0.01
-    _rotateSpeed: 180
+    _brakingAcceleration: 0.005
+    _rotateSpeed: 270
     _attackId: Gun
-    _secondAttackId: Gun
+    _secondAttackId: Laser

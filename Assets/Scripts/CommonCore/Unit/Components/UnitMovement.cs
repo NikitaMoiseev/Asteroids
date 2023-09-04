@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace Unit.Components
 {
-    public class UnitMovement : MonoBehaviour, IInitializable<IUnitModel>
+    public class UnitMovement : MonoBehaviour, IInitializable<Unit>
     {
         private IMovementModel _movementModel;
 
-        public void Init(IUnitModel model)
+        public void Init(Unit data)
         {
-            _movementModel = model.MovementModel;
+            _movementModel = data.Model.MovementModel;
         }
 
         public void Update()

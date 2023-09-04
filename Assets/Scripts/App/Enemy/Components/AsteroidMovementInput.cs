@@ -1,16 +1,17 @@
 using CommonComponents;
 using Unit.Model;
+using UnityEditor;
 using UnityEngine;
 
 namespace App.Enemy.Components
 {
-    public class AsteroidMovementInput : MonoBehaviour, IInitializable<IUnitModel>
+    public class AsteroidMovementInput : MonoBehaviour, IInitializable<Unit.Unit>
     {
         private IMovementModel _movementModel;
         private Vector2 _randomDirection;
-        public void Init(IUnitModel model)
+        public void Init(Unit.Unit data)
         {
-            _movementModel = model.MovementModel;
+            _movementModel = data.Model.MovementModel;
             _randomDirection = Random.insideUnitCircle;
         }
 

@@ -9,7 +9,9 @@
         "Unit",
         "CommonComponents",
         "Unity.InputSystem",
-        "Projectile"
+        "Projectile",
+        "UI",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

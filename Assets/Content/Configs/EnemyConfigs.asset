@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyConfigs:
   - _id: BigAsteroid
+    _reward: 20
     _maxHealth: 1
     _maxSpeed: 1
     _acceleration: 1
@@ -21,9 +22,18 @@ MonoBehaviour:
     _rotateSpeed: 90
     _attackId: MeleeAttack
   - _id: SmallAsteroid
+    _reward: 10
     _maxHealth: 1
     _maxSpeed: 2
     _acceleration: 1
     _brakingAcceleration: 0
     _rotateSpeed: 90
+    _attackId: MeleeAttack
+  - _id: UFO
+    _reward: 50
+    _maxHealth: 1
+    _maxSpeed: 3
+    _acceleration: 1
+    _brakingAcceleration: 0.01
+    _rotateSpeed: 0
     _attackId: MeleeAttack

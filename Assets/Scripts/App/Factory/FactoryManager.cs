@@ -8,7 +8,7 @@ using UnityEngine.Assertions;
 
 namespace App.Factory
 {
-    public abstract class FactoryManager : MonoBehaviour, IDisposable
+    public abstract class FactoryManager : MonoBehaviour
     {
         private IObjectFactory _objectFactory;
 
@@ -22,10 +22,9 @@ namespace App.Factory
             _objectFactory = InitFactory(objectResourceManager);
         }
 
-        public virtual void Dispose()
+        public void DestroyAllObjects()
         {
-            _objectFactory?.DestroyAllObjects();
-            _objectFactory = null;
+            _objectFactory.DestroyAllObjects();
         }
     }
 }
