@@ -6,19 +6,19 @@ namespace Unit.Components
 {
     public class UnitRotation : MonoBehaviour, IInitializable<IUnitModel>
     {
-        private IMovementModel _movementModel;
+        private IRotateModel _rotateModel;
 
         public void Init(IUnitModel model)
         {
-            _movementModel = model.MovementModel;
+            _rotateModel = model.RotateModel;
         }
 
         public void Update()
         {
-            var rotation = Quaternion.AngleAxis(_movementModel.RotateSpeed * Time.deltaTime, Vector3.forward);
+            var rotation = Quaternion.AngleAxis(_rotateModel.RotateAngleValue * Time.deltaTime, Vector3.forward);
             transform.rotation *= rotation;
         }
 
-        private void OnDisable() => _movementModel = null;
+        private void OnDisable() => _rotateModel = null;
     }
 }

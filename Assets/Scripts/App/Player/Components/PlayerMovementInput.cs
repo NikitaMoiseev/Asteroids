@@ -5,10 +5,10 @@ using UnityEngine.InputSystem;
 
 namespace App.Player.Components
 {
-    public class PlayerInput : MonoBehaviour, IInitializable<IUnitModel>
+    public class PlayerMovementInput : MonoBehaviour, IInitializable<IUnitModel>
     {
         private IMovementModel _movementModel;
-
+        private bool _isMovementInput = false;
         public void Init(IUnitModel model)
         {
             _movementModel = model.MovementModel;
@@ -16,17 +16,14 @@ namespace App.Player.Components
 
         public void OnMovement(InputAction.CallbackContext callbackContext)
         {
-            Debug.Log("Move: " + callbackContext.phase);
+            _isMovementInput = callbackContext.phase != InputActionPhase.Canceled;
         }
 
-        public void Update()
+        public void Update() => MovementUpdate();
+
+        public void MovementUpdate()
         {
-
-        }
-
-        public void MoveInput()
-        {
-
+            _movementModel.UpdateVelocity(_isMovementInput ? transform.up : Vector3.zero);
         }
 
     }

@@ -8,7 +8,8 @@
         "ObjectFactory",
         "Unit",
         "CommonComponents",
-        "Unity.InputSystem"
+        "Unity.InputSystem",
+        "Projectile"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

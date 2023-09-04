@@ -1,4 +1,6 @@
-﻿namespace Unit.Model
+﻿using UnityEngine;
+
+namespace Unit.Model
 {
     public interface IAttackModel
     { 
@@ -8,6 +10,6 @@
         float HitDamage { get; }
         float ReloadTimerValue { get; }
         bool IsReady { get; }
-        void Attack();
+        void Attack(Vector3 direaction, Transform launchTransform);
     }
 }

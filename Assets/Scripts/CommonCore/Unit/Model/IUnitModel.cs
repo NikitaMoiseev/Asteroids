@@ -4,6 +4,7 @@
     {
         IHealthModel HealthModel { get; }
         IMovementModel MovementModel { get; }
+        IRotateModel RotateModel { get; }
         IAttackModel AttackModel { get; }
     }
 }

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackConfigs:
   - _id: Test
-    _projectileId: 
+    _projectileId: Bullet
     _attackInterval: 2
     _hitDamage: 2

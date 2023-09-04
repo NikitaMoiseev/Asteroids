@@ -1,4 +1,5 @@
 using App.CommonUnit.Config.Attack;
+using App.Enemy.Manager;
 using ObjectFactory;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace App.CommonUnit.Model
     public class ReloadableAttackModel : IAttackModel
     {
         private float _timeLastAttack;
-        private IObjectFactory _factory;
+        private ProjectileSpawner _projectileSpawner;
 
         public string Name { get; }
         public string ProjectileId { get; }
@@ -19,21 +20,21 @@ namespace App.CommonUnit.Model
         public float ReloadTimerValue => Mathf.Clamp(Time.time - _timeLastAttack, 0, AttackInterval);
         public bool IsReady => ReloadTimerValue == AttackInterval;
 
-        public ReloadableAttackModel(AttackConfig attackConfig, IObjectFactory factory)
+        public ReloadableAttackModel(AttackConfig attackConfig, ProjectileSpawner projectileSpawner)
         {
             Name = attackConfig.Id;
             ProjectileId = attackConfig.ProjectileId;
             AttackInterval = attackConfig.AttackInterval;
             HitDamage = attackConfig.HitDamage;
-            _factory = factory;
+            _projectileSpawner = projectileSpawner;
         }
 
-        public void Attack()
+        public void Attack(Vector3 direaction, Transform launchTransform)
         {
             if (!IsReady)
                 return;
             _timeLastAttack = Time.time;
-
+            _projectileSpawner.SpawnProjectile(ProjectileId, DamageInfo.FromAttackModel(this), direaction, launchTransform);
         }
     }
 }

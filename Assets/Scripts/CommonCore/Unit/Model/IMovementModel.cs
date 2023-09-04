@@ -5,10 +5,10 @@ namespace Unit.Model
     public interface IMovementModel
     {
         float MaxSpeed { get; }
+        float Acceleration { get; }
+        float BrakingAcceleration { get; }
         Vector3 Velocity { get; }
-        float RotateSpeed { get; }
 
-        void AddVelocity(Vector3 velocity);
-        void SetRotateSpeed(float speed);
+        void UpdateVelocity(Vector3 direction);
     }
 }

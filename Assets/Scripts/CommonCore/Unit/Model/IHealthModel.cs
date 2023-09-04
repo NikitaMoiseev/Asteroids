@@ -9,6 +9,7 @@ namespace Unit.Model
         float CurrentHealth { get; }
 
         event Action<DamageInfo> OnDamageTaken;
+        event Action OnDead;
 
         void TakeDamage(DamageInfo damage);
     }

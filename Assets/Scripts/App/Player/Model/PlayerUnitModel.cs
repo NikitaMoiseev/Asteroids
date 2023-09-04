@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unit.Model;
-using UnityEngine;
 
 namespace App.Player.Model
 {
@@ -9,13 +6,16 @@ namespace App.Player.Model
     {
         public IHealthModel HealthModel { get; }
         public IMovementModel MovementModel { get; }
+        public IRotateModel RotateModel { get; }
         public IAttackModel AttackModel { get; }
         public IAttackModel SecondAttackModel { get; }
 
-        public PlayerUnitModel(IHealthModel healthModel, IMovementModel movementModel, IAttackModel attackModel, IAttackModel secondAttackModel)
+
+        public PlayerUnitModel(IHealthModel healthModel, IMovementModel movementModel, IRotateModel rotateModel, IAttackModel attackModel, IAttackModel secondAttackModel)
         {
             HealthModel = healthModel;
             MovementModel = movementModel;
+            RotateModel = rotateModel;
             AttackModel = attackModel;
             SecondAttackModel = secondAttackModel;
         }

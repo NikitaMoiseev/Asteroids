@@ -1,3 +1,4 @@
+using App.CommonUnit.Config;
 using System.Collections;
 using System.Collections.Generic;
 using Unit.Model;
@@ -8,26 +9,30 @@ namespace App.CommonUnit.Model
     public class UnitMovementModel : IMovementModel
     {
         public float MaxSpeed { get; }
+        public float Acceleration { get; }
+        public float BrakingAcceleration { get; }
         public Vector3 Velocity { get; private set; }
-        public float RotateSpeed { get; private set; }
 
-        public UnitMovementModel(float maxSpeed)
+        public UnitMovementModel(UnitConfig config)
         {
-            MaxSpeed = maxSpeed;
-            Velocity = Vector3.zero;
-            RotateSpeed = 0;
+            MaxSpeed = config.MaxSpeed;
+            Acceleration = config.Acceleration;
+            BrakingAcceleration = config.BrakingAcceleration;
         }
 
-        public void AddVelocity(Vector3 velocity)
+        public void UpdateVelocity(Vector3 direction)
+        {
+            if (direction != Vector3.zero)
+                AddVelocity(direction.normalized * Acceleration);
+            else
+                AddVelocity(-Velocity.normalized * BrakingAcceleration);
+        }
+
+        private void AddVelocity(Vector3 velocity)
         {
             Velocity += velocity;
-            if(velocity.sqrMagnitude > MaxSpeed * MaxSpeed)
+            if (Velocity.sqrMagnitude > MaxSpeed * MaxSpeed)
                 Velocity = Velocity.normalized * MaxSpeed;
-        }
-
-        public void SetRotateSpeed(float speed)
-        {
-            RotateSpeed = speed;
         }
     }
 }

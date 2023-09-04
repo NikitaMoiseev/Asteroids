@@ -1,20 +1,53 @@
 using App.CommonUnit.Config.Attack;
 using App.CommonUnit.Model;
+using App.Enemy.Manager;
+using App.Player.Config;
 using App.Player.Model;
 using ObjectFactory;
+using System;
+using Unit.Model;
+using UnityEngine;
 
 namespace App.Player.Manager
 {
-    public class PlayerManager
+    public class PlayerManager : IDisposable
     {
         public Unit.Unit Player { get; private set; }
 
+        private PlayerConfig _playerConfig;
+        private IObjectFactory _objectFactory;
+        private AttackConfigsSO _attackConfigs;
+        private ProjectileSpawner _projectileSpawner;
 
-        public void SpawnPlayer(IObjectFactory factory, AttackConfigsSO attackConfigsSO)
+        public PlayerManager(
+            PlayerConfig config,
+            IObjectFactory factory,
+            AttackConfigsSO attackConfigsSO,
+            ProjectileSpawner projectileSpawner)
         {
-            Player = factory.Create<Unit.Unit>("Player");
-            var playerModel = new PlayerUnitModel(new UnitHealthModel(1), new UnitMovementModel(2), new ReloadableAttackModel(attackConfigsSO.GetConfig("Test"), factory), null);
+            _playerConfig = config;
+            _objectFactory = factory;
+            _attackConfigs = attackConfigsSO;
+            _projectileSpawner = projectileSpawner;
+        }
+
+        public void SpawnPlayer(Vector3 position, Action OnDeadAction)
+        {
+            Player = _objectFactory.Create<Unit.Unit>(_playerConfig.Id);
+            var playerModel = new PlayerUnitModel(
+                new UnitHealthModel(_playerConfig),
+                new UnitMovementModel(_playerConfig),
+                new UnitRotateModel(_playerConfig),
+                new ReloadableAttackModel(_attackConfigs.GetConfig(_playerConfig.AttackId), _projectileSpawner),
+                new ReloadableAttackModel(_attackConfigs.GetConfig(_playerConfig.SecondAttackId), _projectileSpawner));
             Player.Init(playerModel);
+            playerModel.HealthModel.OnDead += OnDeadAction;
+            Player.transform.position = position;
+        }
+
+        public void Dispose()
+        {
+            Player = null;
         }
     }
 }
